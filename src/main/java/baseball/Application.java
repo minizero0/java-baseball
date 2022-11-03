@@ -5,12 +5,12 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.Scanner;
 
 public class Application {
     static Scanner sc = new Scanner(System.in);
 
+    //3Strike일 경우 게임 시작,종료 여부 확인 메소드
     public static int check3Strike(String str){
         int answer = 0;
         if (str.equals("3스트라이크")) {
@@ -21,7 +21,7 @@ public class Application {
         return answer;
     }
 
-    //스트라이크 개수 체크
+    //스트라이크 개수 체크 메소드
     public static String strikeCheck(int cnt){
         String str;
         switch (cnt){
@@ -33,7 +33,7 @@ public class Application {
         return str;
     }
 
-    //볼 개수 체크
+    //볼 개수 체크 메소드
     public static String ballCheck(int cnt){
         String str;
         switch (cnt){
@@ -45,6 +45,7 @@ public class Application {
         return str;
     }
 
+    //입력과 컴퓨터 난수를 비교하여 문자열 출력하는 메소드
     public static String numberCheck(int[] number, List<Integer> randNumber){
         int cnt1 = 0;
         int cnt2 = 0;
@@ -66,7 +67,7 @@ public class Application {
             return str2 + " " + str1;
     }
 
-    //입력받은 정수 배열로 변환
+    //입력받은 정수 배열로 변환 메소드
     public static int[] numberTrans(int number){
         int arr[] = new int[3];
         int i = 2;
@@ -90,6 +91,7 @@ public class Application {
         return computer;
     }
 
+    //메인 메소드
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> randNumber = randNumber();
