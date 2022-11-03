@@ -11,6 +11,16 @@ import java.util.Scanner;
 public class Application {
     static Scanner sc = new Scanner(System.in);
 
+    public static int check3Strike(String str){
+        int answer = 0;
+        if (str.equals("3스트라이크")) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+             answer = sc.nextInt();
+        }
+        return answer;
+    }
+
     //스트라이크 개수 체크
     public static String strikeCheck(int cnt){
         String str;
@@ -50,6 +60,8 @@ public class Application {
             return "낫싱";
         else if(str2==null)
             return str1;
+        else if (str1==null)
+            return str2;
         else
             return str2 + " " + str1;
     }
@@ -81,19 +93,21 @@ public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> randNumber = randNumber();
-        System.out.println(randNumber);
-        System.out.print("숫자를 입력해주세요 : ");
-        int number = sc.nextInt();
-        int arr[] = numberTrans(number);
-        String str = numberCheck(arr, randNumber);
-        System.out.println(str);
-        if (str.equals("3스트라이크")){
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        while(true) {
+
+            System.out.println(randNumber);
+            System.out.print("숫자를 입력해주세요 : ");
+            int number = sc.nextInt();
+            int arr[] = numberTrans(number);
+            String str = numberCheck(arr, randNumber);
+            System.out.println(str);
+            int answer = check3Strike(str);
+            if(answer==1)
+                randNumber = randNumber();
+            else if(answer==2)
+                break;
+
+
         }
-
-
-
-
-
     }
 }
